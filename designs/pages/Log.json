@@ -1,0 +1,74 @@
+[
+    {
+        "id": "sd_fMSS2KhfwaKflGoC",
+        "type": "tab",
+        "createdDate": "2022-06-02T21:03:25.112Z",
+        "label": "Log",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "LogComponent"
+    },
+    {
+        "id": "sd_9KuIAVJ8uzNasWdb",
+        "type": "OnInit",
+        "z": "sd_fMSS2KhfwaKflGoC",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "On init",
+        "inputVariables": [
+            {
+                "key": "logArray",
+                "defaultValue": {
+                    "type": "any",
+                    "value": "[]"
+                }
+            }
+        ],
+        "localVariables": [],
+        "outputVariables": [],
+        "functionName": "onInit",
+        "category": "Lifecycle Events",
+        "x": 30,
+        "y": 30,
+        "wires": [
+            [
+                "sd_IRuxv3IiWccNVVbv"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "LogComponent"
+    },
+    {
+        "id": "sd_IRuxv3IiWccNVVbv",
+        "type": "PageVariables",
+        "z": "sd_fMSS2KhfwaKflGoC",
+        "viewType": "pages",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 1,
+        "operation": "set",
+        "globalVariables": [
+            {
+                "textIp": "showLog",
+                "typedIpValue": {
+                    "type": "literal",
+                    "value": "True"
+                }
+            }
+        ],
+        "functionName": "sd_IRuxv3IiWccNVVbv",
+        "category": "Function",
+        "x": 180,
+        "y": 30,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "generated": true
+    }
+]

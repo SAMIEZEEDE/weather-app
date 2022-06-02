@@ -1,0 +1,312 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_T3EHa6qNDONf7tja",
+        "type": "tab",
+        "createdDate": "2022-06-02T23:15:44.390Z",
+        "label": "weatherserver",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "weatherserver",
+        "relativeParentPath": ""
+    },
+    {
+        "id": "sd_qNw9lpAL6y5uXVoE",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_T3EHa6qNDONf7tja",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "call weather api",
+        "path": "/weather",
+        "uploadpath": "",
+        "summary": "",
+        "description": "",
+        "method": "get",
+        "sequenceId": "",
+        "consumes": "",
+        "produces": "",
+        "filetype": "path",
+        "acceptFileUpload": false,
+        "httpOptions": {
+            "/weather": {
+                "get": {
+                    "summary": "",
+                    "description": "",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [],
+                    "responses": {}
+                }
+            }
+        },
+        "editableListData": {
+            "responses": [],
+            "params": [],
+            "produces": [],
+            "consumes": []
+        },
+        "inputs": 0,
+        "outputs": 1,
+        "category": "HTTP",
+        "x": 60,
+        "y": 80,
+        "wires": [
+            [
+                "sd_aPQkVmEubcO4fqwO"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "uploadpath": {
+                "type": "str",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "weatherserver",
+        "functionName": "sd_qNw9lpAL6y5uXVoE"
+    },
+    {
+        "id": "sd_aPQkVmEubcO4fqwO",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_T3EHa6qNDONf7tja",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "construct url params",
+        "script": "bh.url = process.env.weatherProviderURL;\nbh.qparams = {\nq: bh.input.query.cityName,\nAPPID: process.env.apiId,\nunits: 'metric'\n} ",
+        "functionName": "constructUrlParams",
+        "category": "Function",
+        "x": 205,
+        "y": 80,
+        "wires": [
+            [
+                "sd_FUlDHBtU9o8KUJu1"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "generated": true
+    },
+    {
+        "id": "sd_FUlDHBtU9o8KUJu1",
+        "type": "ServerHttpRequest",
+        "z": "SSD_SERVICE_ID_sd_T3EHa6qNDONf7tja",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "method": "get",
+        "methodMappingObj": {},
+        "urlMapping": "bh.url",
+        "urlMappingObj": {
+            "mapVarType": "bh",
+            "mapVarValue": "url"
+        },
+        "ret": "json",
+        "retMappingObj": {},
+        "reqBodyObj": {
+            "mapVarType": "bh",
+            "mapVarValue": ""
+        },
+        "resultMapping": "bh.result",
+        "resultMappingObj": {
+            "mapVarType": "bh",
+            "mapVarValue": "result"
+        },
+        "headers": {},
+        "headersObj": [],
+        "headerMappingObj": {},
+        "paramMapping": "bh.qparams",
+        "paramMappingObj": {
+            "mapVarType": "bh",
+            "mapVarValue": "qparams"
+        },
+        "useAuthTypeMappingObj": {},
+        "useAuthUsername": "",
+        "useAuthUsernameMappingObj": "",
+        "useAuthPassword": "",
+        "useAuthPasswordMappingObj": "",
+        "useAuthToken": "",
+        "useAuthTokenMappingObj": "",
+        "useQueryString": false,
+        "tls": "",
+        "followRedirect": true,
+        "paytoqs": false,
+        "useAuthentication": false,
+        "rejectUnauthorized": false,
+        "proxy": "",
+        "useProxy": false,
+        "usetls": false,
+        "cookiesMapObj": {},
+        "cookiesList": {},
+        "switchStates": {
+            "cookies": "Map"
+        },
+        "editableListData": {},
+        "timeout": {
+            "type": "num",
+            "value": ""
+        },
+        "functionName": "sd_FUlDHBtU9o8KUJu1",
+        "category": "HTTP",
+        "x": 360,
+        "y": 80,
+        "wires": [
+            [
+                "sd_ffjaPKWGJDZw2w1z",
+                "sd_MM1gLgI9NgLuJ5Wf"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "generated": true
+    },
+    {
+        "id": "sd_ffjaPKWGJDZw2w1z",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_T3EHa6qNDONf7tja",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "send response",
+        "headers": {},
+        "responseBody": {
+            "type": "bh",
+            "value": "result.payload",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh",
+            "value": "result.statusCode",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "responseMapping": {
+            "status": "bh.result.statusCode",
+            "obj": "bh.result.payload",
+            "send": "bh.result.payload"
+        },
+        "inputs": 1,
+        "outputs": 0,
+        "editableListData": {
+            "headers": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "sendResponse",
+        "category": "HTTP",
+        "x": 505,
+        "y": 40,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "generated": true
+    },
+    {
+        "id": "sd_MM1gLgI9NgLuJ5Wf",
+        "type": "ServerLog",
+        "z": "SSD_SERVICE_ID_sd_T3EHa6qNDONf7tja",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "log result",
+        "outputs": 0,
+        "logObject": "bh.result",
+        "logLevel": "info",
+        "functionName": "logResult",
+        "category": "General",
+        "x": 485,
+        "y": 120,
+        "wires": [],
+        "__ssdTypeInputs__": {
+            "logObject": {
+                "type": "bh",
+                "value": "result",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "generated": true
+    },
+    {
+        "id": "sd_dnoQQFgj2qHxNnFx",
+        "type": "Catch",
+        "z": "SSD_SERVICE_ID_sd_T3EHa6qNDONf7tja",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "",
+        "selectedNodes": "all-nodes",
+        "selectCatchType": "allnodes",
+        "masternodeList": "",
+        "ignoreList": [],
+        "functionName": "sd_dnoQQFgj2qHxNnFx",
+        "category": "General",
+        "x": 100,
+        "y": 280,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "weatherserver"
+    },
+    {
+        "id": "sd_eYnGEjTmy58GOlB0",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_T3EHa6qNDONf7tja",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "headers": {},
+        "responseBody": {
+            "type": "literal",
+            "value": "{message: \"Something went wrong\"}",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "num",
+            "value": 500,
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "responseMapping": {
+            "status": {
+                "type": "num",
+                "value": 500,
+                "ssd_typedInputField": true
+            },
+            "obj": {
+                "type": "literal",
+                "value": "{message: \"Something went wrong\"}",
+                "ssd_typedInputField": true
+            },
+            "send": {
+                "type": "literal",
+                "value": "{message: \"Something went wrong\"}",
+                "ssd_typedInputField": true
+            }
+        },
+        "inputs": 1,
+        "outputs": 0,
+        "editableListData": {
+            "headers": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "sd_eYnGEjTmy58GOlB0",
+        "category": "HTTP",
+        "x": 300,
+        "y": 280,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
+    }
+]

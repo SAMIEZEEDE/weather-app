@@ -1,0 +1,96 @@
+[
+    {
+        "id": "sd_WGAxAK5kNPg2ZBUG",
+        "type": "tab",
+        "createdDate": "2022-06-02T21:04:13.465Z",
+        "label": "weathercard",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "weathercardComponent"
+    },
+    {
+        "id": "sd_qmfFc7dabZi72kMx",
+        "type": "OnInit",
+        "z": "sd_WGAxAK5kNPg2ZBUG",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "",
+        "inputVariables": [
+            {
+                "key": "showCard",
+                "defaultValue": {
+                    "type": "any",
+                    "value": "false"
+                }
+            },
+            {
+                "key": "weatherdata",
+                "defaultValue": {
+                    "type": "any",
+                    "value": "{}"
+                }
+            }
+        ],
+        "localVariables": [],
+        "outputVariables": [
+            {
+                "key": "log",
+                "defaultValue": {
+                    "type": "any",
+                    "value": null
+                }
+            }
+        ],
+        "functionName": "sd_qmfFc7dabZi72kMx",
+        "category": "Lifecycle Events",
+        "x": 30,
+        "y": 30,
+        "wires": [
+            [
+                "sd_VXuQa6ay4lBFggU1"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "weathercardComponent"
+    },
+    {
+        "id": "sd_VXuQa6ay4lBFggU1",
+        "type": "PageVariables",
+        "z": "sd_WGAxAK5kNPg2ZBUG",
+        "viewType": "pages",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 1,
+        "operation": "set",
+        "globalVariables": [
+            {
+                "textIp": "localStorage",
+                "typedIpValue": {
+                    "type": "literal",
+                    "value": "localStorage"
+                }
+            },
+            {
+                "textIp": "showCard",
+                "typedIpValue": {
+                    "type": "literal",
+                    "value": "false"
+                }
+            }
+        ],
+        "functionName": "sd_VXuQa6ay4lBFggU1",
+        "category": "Function",
+        "x": 180,
+        "y": 30,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "generated": true
+    }
+]
